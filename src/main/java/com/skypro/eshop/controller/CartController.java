@@ -12,21 +12,21 @@ import java.util.Set;
 @RestController
 @RequestMapping("/order")
 public class CartController {
-    private final CartService cartService;
+    private final CartService service;
 
-    public CartController(CartService cartService) {
-        this.cartService = cartService;
+    public CartController(CartService service) {
+        this.service = service;
     }
 
     @GetMapping("/add")
     public void add(@RequestParam("ID") Set<Integer> items) {
-        cartService.add(items);
+        service.add(items);
 
     }
 
     @GetMapping("/get")
     public Collection<Integer> get(@RequestParam("ID") Set<Integer> items) {
-        return cartService.get();
+        return service.get();
 
     }
 
