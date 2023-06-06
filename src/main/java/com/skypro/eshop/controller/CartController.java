@@ -25,7 +25,7 @@ public class CartController {
     }
 
     @GetMapping("/get")
-    public Collection<Integer> get(@RequestParam("ID") Set<Integer> items) {
+    public Collection<Integer> get() {
         return service.get();
 
     }

@@ -1,29 +1,27 @@
 package com.skypro.eshop.service;
 
+import com.skypro.eshop.model.Basket;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
 
-import java.util.Collection;
+
 import java.util.Collections;
 import java.util.Set;
 
 @Service
-@SessionScope
 public class CartService {
+    private final Basket basket;
 
-    private final Set<Integer> items;
-
-    public CartService(Set<Integer> items) {
-        this.items = items;
+    public CartService(Basket basket) {
+        this.basket = basket;
     }
 
-    public void add(Set<Integer> ids){
-        items.addAll(ids);
-    }
-    public Set<Integer> get(){
-        return Collections.unmodifiableSet(items);
+    public void add(Set<Integer> ids) {
+        basket.getItems().addAll(ids);
     }
 
+    public Set<Integer> get() {
+        return Collections.unmodifiableSet(basket.getItems());
+    }
 
 
 }
